@@ -670,26 +670,21 @@ namespace Kitronik_Move_Motor {
         }
 
         let motorOnbuf = pins.createBuffer(2)
+        let motorGNDPinbuf = pins.createBuffer(2)
         
         if (motor == Motors.MotorRight){
             switch (dir) {
                 case MotorDirection.Forward:
-                    motorOnbuf[0] = motor
-                    motorOnbuf[1] = 0x00
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
+                    motorGNDPinbuf[0] = motor
+                    motorGNDPinbuf[1] = 0x00
                     motorOnbuf[0] = motor + 1
                     motorOnbuf[1] = outputVal  - rightMotorBias
-                    //motorOnbuf[1] = outputVal
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
                     break
                 case MotorDirection.Reverse:
                     motorOnbuf[0] = motor
                     motorOnbuf[1] = outputVal - rightMotorBias
-                    //motorOnbuf[1] = outputVal
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
-                    motorOnbuf[0] = motor + 1
-                    motorOnbuf[1] = 0x00
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
+                    motorGNDPinbuf[0] = motor + 1
+                    motorGNDPinbuf[1] = 0x00
                     break
             }
         }
@@ -698,26 +693,23 @@ namespace Kitronik_Move_Motor {
                 case MotorDirection.Forward:
                     motorOnbuf[0] = motor
                     motorOnbuf[1] = outputVal - leftMotorBias
-                    //motorOnbuf[1] = outputVal
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
-                    motorOnbuf[0] = motor + 1
-                    motorOnbuf[1] = 0x00
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
+                    motorGNDPinbuf[0] = motor + 1
+                    motorGNDPinbuf[1] = 0x00
                     break
                 case MotorDirection.Reverse:
-                    motorOnbuf[0] = motor
-                    motorOnbuf[1] = 0x00
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
+                    motorGNDPinbuf[0] = motor
+                    motorGNDPinbuf[1] = 0x00
                     motorOnbuf[0] = motor + 1
                     motorOnbuf[1] = outputVal - leftMotorBias
-                    //motorOnbuf[1] = outputVal
-                    pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
+
                     break
             }
         }
+        pins.i2cWriteBuffer(CHIP_ADDR, motorOnbuf, false)
+        pins.i2cWriteBuffer(CHIP_ADDR, motorGNDPinbuf, false)
     }
 
-    /**
+	/**
      * Turns off the specified motor.
      * @param motor which motor to turn off
      */
