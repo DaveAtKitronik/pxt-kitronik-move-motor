@@ -575,10 +575,10 @@ namespace Kitronik_Move_Motor {
     export function readSensor(sensorSelected: LfSensor) {
         let value = 0
 
-        if (sensorSelected == LfSensor.left) {
+        if (sensorSelected == LfSensor.Left) {
             value = pins.analogReadPin(AnalogPin.P2)
         }
-        else if (sensorSelected == LfSensor.right) {
+        else if (sensorSelected == LfSensor.Right) {
             value = pins.analogReadPin(AnalogPin.P1)
         }
         return value;
