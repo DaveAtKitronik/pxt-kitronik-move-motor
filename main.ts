@@ -16,9 +16,9 @@ namespace Kitronik_Move_Motor {
 
     /*GENERAL*/
     export enum OnOffSelection {
-        //% block="on"
+        //% block="On"
         On = 1,
-        //% block="off"
+        //% block="Off"
         Off = 0
     }
 
@@ -75,10 +75,10 @@ namespace Kitronik_Move_Motor {
     /*LINE FOLLOWING*/
     // Selection of line following sensor
     export enum LfSensor {
-        //% block="left"
-        left,
-        //% block="right"
-        right
+        //% block="Left"
+        Left,
+        //% block="Right"
+        Right
     }
     //Light level detection mode selection
     export enum LightSelection {
@@ -99,8 +99,8 @@ namespace Kitronik_Move_Motor {
         High
     }
 
-    let initalised = false //a flag to allow us to initialise without explicitly calling the secret incantation
-    //Motor global variables
+    let initalised = false //a flag to allow us to initialise without explicitly calling an initialisation routine
+    //Motor global variables - used to 'trim' the motor speeds for better straight line ness
     let rightMotorBias = 0
     let leftMotorBias = 0
     //Sound global variables
@@ -108,12 +108,13 @@ namespace Kitronik_Move_Motor {
     //Ultrasonic global variables
     let triggerPin = DigitalPin.P13
     let echoPin = DigitalPin.P14
-    //Line following sensors global variables
+    //Line following sensors global variables - a baseline detection threshold to simplify use.
     let detectionLevel = 245
 
 
-	/*
-		This secret incantation sets up the PCA9632 I2C driver chip to be running 
+     /*
+	This sets up the PCA9632 I2C driver chip, 
+	which is used to expande the microbit IO so we can drive motors with PWM, and also do buzzer and ZIP LEDs
     */
     function setup(): void {
         let buf = pins.createBuffer(2)
@@ -136,23 +137,6 @@ namespace Kitronik_Move_Motor {
     //  LIGHTS  //
     //////////////
 
-    /**
-    * Turns on and off the tail light.
-    * @param illuminate which selects the LED to turn on or off
-    */
-    //% subcategory="Lights"
-    //% group="Tail Light"
-    //% blockId=kitronik_move_motor_tail_light
-    //% weight=100 blockGap=8
-    //% block="turn tail light %illuminate"
-    export function shineTailLight(illuminate: OnOffSelection): void {
-        if (illuminate == OnOffSelection.On) {
-            pins.digitalWritePin(DigitalPin.P12, 1);
-        }
-        else {
-            pins.digitalWritePin(DigitalPin.P12, 0);
-        }
-    }
 
     export class MoveMotorZIP {
         buf: Buffer;
@@ -520,7 +504,7 @@ namespace Kitronik_Move_Motor {
     //% subcategory="Sensors"
     //% group="Ultrasonic"
     //% blockId=kitronik_move_motor_ultrasonic_measure
-    //% block="measure distances in |unit %unit"
+    //% block="distance %unit"
     //% weight=90 blockGap=8
     export function measure(unit: Units, maxCmDistance = 500): number {
         // send pulse
@@ -572,7 +556,7 @@ namespace Kitronik_Move_Motor {
         }
     }
 
-    // not a block, but here in case someone advanced in the java world want sto set the value directly.
+    // not a block, but here in case someone advanced in the java world wants to set the value directly.
     // No checking of 'goodness' of value - it should be analog in (0-1023)
     export function setSensorDetectionLevel(value:number)
     {
