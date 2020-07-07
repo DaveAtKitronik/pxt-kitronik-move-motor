@@ -11,7 +11,7 @@ Learn how to use the :MOVE Motor's lights to make headlights and indicators, and
 
 ## Headlights and Rear Lights
 ### Step 1
-To start with, let's make some headlights and rear lights for :MOVE Motor.  
+Francais tutorial? To start with, let's make some headlights and rear lights for :MOVE Motor.  
 First, place the ``||variables:set moveMotorZIP to||`` ``||Kitronik_Move_Motor.MOVE Motor with 4 ZIP LEDs||`` block from the ``||Kitronik_Move_Motor.Lights||`` section of the ``||Kitronik_Move_Motor.MOVE Motor||`` category into the ``||basic:on start||`` block.  
 This sets up the ZIP LEDs on :MOVE Motor ready to be used.
 
