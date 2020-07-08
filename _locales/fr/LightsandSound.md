@@ -21,28 +21,28 @@ let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 ```
 
 ### Étape 2
-Comme nous allons avoir des phares avant et des feux arrière, nous devons également créer deux variables, ``||variables:phares||`` et ``||variables:feux arrière||``.  
-Dans le bloc ``||basic:au démarrage||`` utilisez la variable``||variables:modifier de||`` pour que  ``||variables:phares||`` soit égal à un``||Kitronik_Move_Motor.gamme de 0 avec 2 DEL||`` et ``||variables:feux arrière||`` égal à un ``||Kitronik_Move_Motor.gamme de 2 avec 2 DEL||``. Les plages séparées signifient que les deux ensembles de feux peuvent être contrôlés individuellement.
+Comme nous allons avoir des phares avant et des feux arrière, nous devons également créer deux variables, ``||variables:phares||`` et ``||variables:feux_arrière||``.  
+Dans le bloc ``||basic:au démarrage||`` utilisez la variable``||variables:modifier de||`` pour que  ``||variables:phares||`` soit égal à un``||Kitronik_Move_Motor.gamme de 0 avec 2 DEL||`` et ``||variables:feux_arrière||`` égal à un ``||Kitronik_Move_Motor.gamme de 2 avec 2 DEL||``. Les plages séparées signifient que les deux ensembles de feux peuvent être contrôlés individuellement.
 
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 ```
 
 ### Étape 3
 Nous devons maintenant régler les lumières pour qu'elles soient de la bonne couleur : **blanc** pour les phares, **rouge** pour les feux arrière.  
-Dans la boucle ``||basic:toujours||`` utilisez le bloc ``||Kitronik_Move_Motor.montrer la couleur ||`` de la section ``||Kitronik_Move_Motor.Lights||`` de la catégorie ``||Kitronik_Move_Motor.MOVE Motor||`` pour afficher les couleurs. Modifiez la liste déroulante pour sélectionner les variables``||variables:phares||`` et ``||variables:feux arrière||`` dans les différents blocs.
+Dans la boucle ``||basic:toujours||`` utilisez le bloc ``||Kitronik_Move_Motor.montrer la couleur ||`` de la section ``||Kitronik_Move_Motor.Lights||`` de la catégorie ``||Kitronik_Move_Motor.MOVE Motor||`` pour afficher les couleurs. Modifiez la liste déroulante pour sélectionner les variables``||variables:phares||`` et ``||variables:feux_arrière||`` dans les différents blocs.
 
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-    feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+    feux_arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
 })
 ```
 
@@ -61,7 +61,7 @@ Faites glisser les blocs ``||Kitronik_Move_Motor.montrer la couleur||`` hors de 
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (true) {
     	
@@ -78,11 +78,11 @@ Enfin, faites glisser ces blocs  ``||Kitronik_Move_Motor.montrer la couleur||`` 
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (input.lightLevel() < 20) {
         phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-        feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+        feux_arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
     }
 })
 ```
@@ -99,11 +99,11 @@ Cliquez sur l'icône ``||logic:+||`` sur le bloc ``||logic:si||``pour ajouter un
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (input.lightLevel() < 20) {
         phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-        feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+        feux_arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
     } else {
         moveMotorZIP.clear()
         moveMotorZIP.show()
@@ -135,11 +135,11 @@ function indicate (direction: string) {
 }
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (input.lightLevel() < 20) {
         phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-        feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+        feux_arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
     } else {
         moveMotorZIP.clear()
         moveMotorZIP.show()
@@ -303,12 +303,12 @@ let clignotant = false
 let moveMotorZIP: Kitronik_Move_Motor.MoveMotorZIP = null
 moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (!(clignotant)) {
         if (input.lightLevel() < 20) {
             phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-            feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+            feux_arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
         } else {
             moveMotorZIP.clear()
             moveMotorZIP.show()
@@ -439,12 +439,12 @@ let police = false
 let moveMotorZIP: Kitronik_Move_Motor.MoveMotorZIP = null
 moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 let phares = moveMotorZIP.range(0, 2)
-let feux arrière = moveMotorZIP.range(2, 2)
+let feux_arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (!(indicating) && !(police)) {
         if (input.lightLevel() < 20) {
             phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-            feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+            feux_arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
         } else {
             moveMotorZIP.clear()
             moveMotorZIP.show()
