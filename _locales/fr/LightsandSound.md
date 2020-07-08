@@ -12,7 +12,7 @@ Apprenez à utiliser les feux du :MOVE motor pour faire des phares et des cligno
 ## Phares et feux arrière
 ### Étape 1
 Pour commencer, faisons des phares et des feux arrière pour :MOVE Motor.  
-Tout d'abord, placez les variables ``||variables:définir moveMotorZIP à||`` ``||Kitronik_Move_Motor.MOVE Motor avec 4 DEL ZIP||`` du bloc ``||Kitronik_Move_Motor.Luminères||`` de la catégorie  ``||Kitronik_Move_Motor.MOVE Motor||`` dans le bloc ``||basic:au demarrage||``.  
+Tout d'abord, placez les bloc ``||variables:définir moveMotorZIP à||`` ``||Kitronik_Move_Motor.MOVE Motor avec 4 DEL ZIP||`` de la catégorie ``||Kitronik_Move_Motor.Luminères||`` dans ``||Kitronik_Move_Motor.MOVE Motor||`` dans le bloc ``||basic:au démarrage||``.  
 Cela permet de mettre les DEL ZIP sur :MOVE Motor prêt à être utilisé.
 
 #### ~ tutorialhint
@@ -21,28 +21,28 @@ let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
 ```
 
 ### Étape 2
-Comme nous allons avoir des phares avant et des feux arrière, nous devons également créer deux variables, ``||variables:headlights||`` et ``||variables:rearlights||``.  
-Dans le bloc ``||basic:on start||`` utilisez la variable``||variables:set variable to||`` pour que  ``||variables:headlights||`` soit égal à un``||Kitronik_Move_Motor.range from 0 with 2 leds||`` et ``||variables:rearlights||`` égal à un ``||Kitronik_Move_Motor.range from 2 with 2 leds||``. Les plages séparées signifient que les deux ensembles de feux peuvent être contrôlés individuellement.
+Comme nous allons avoir des phares avant et des feux arrière, nous devons également créer deux variables, ``||variables:phares||`` et ``||variables:feux arrière||``.  
+Dans le bloc ``||basic:au démarrage||`` utilisez la variable``||variables:modifier de||`` pour que  ``||variables:phares||`` soit égal à un``||Kitronik_Move_Motor.gamme de 0 avec 2 DEL||`` et ``||variables:feux arrière||`` égal à un ``||Kitronik_Move_Motor.gamme de 2 avec 2 DEL||``. Les plages séparées signifient que les deux ensembles de feux peuvent être contrôlés individuellement.
 
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
-let rearlights = moveMotorZIP.range(2, 2)
+let phares = moveMotorZIP.range(0, 2)
+let feux arrière = moveMotorZIP.range(2, 2)
 ```
 
 ### Étape 3
 Nous devons maintenant régler les lumières pour qu'elles soient de la bonne couleur : **blanc** pour les phares, **rouge** pour les feux arrière.  
-Dans la boucle ``||basic:forever||`` utilisez le bloc ``||Kitronik_Move_Motor.show colour||`` de la section ``||Kitronik_Move_Motor.Lights||`` de la catégorie ``||Kitronik_Move_Motor.MOVE Motor||`` pour afficher les couleurs. Modifiez la liste déroulante pour sélectionner les variables``||variables:headlights||`` et ``||variables:rearlights||`` dans les différents blocs.
+Dans la boucle ``||basic:toujours||`` utilisez le bloc ``||Kitronik_Move_Motor.montrer la couleur ||`` de la section ``||Kitronik_Move_Motor.Lights||`` de la catégorie ``||Kitronik_Move_Motor.MOVE Motor||`` pour afficher les couleurs. Modifiez la liste déroulante pour sélectionner les variables``||variables:phares||`` et ``||variables:feux arrière||`` dans les différents blocs.
 
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
-let rearlights = moveMotorZIP.range(2, 2)
+let phares = moveMotorZIP.range(0, 2)
+let feux arrière = moveMotorZIP.range(2, 2)
 basic.forever(function () {
-    headlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
-    rearlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
+    phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
+    feux arrière.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
 })
 ```
 
@@ -55,12 +55,12 @@ Beaucoup de voitures modernes ont des phares qui s'allument automatiquement lors
 
 ### Étape 5
 L'écran LED micro:bit peut également fonctionner comme un capteur de lumière, que nous pouvons ensuite utiliser comme un interrupteur pour allumer et éteindre les lumières du :MOVE motor. 
-Faites glisser les blocs ``||Kitronik_Move_Motor.show colour||`` hors de la boucle  ``||basic:forever||`` ,en les laissant de côté, et ajoutez un bloc  ``||logic:if||`` de la catégorie  ``||logic:Logic||``.
+Faites glisser les blocs ``||Kitronik_Move_Motor.montrer la couleur||`` hors de la boucle  ``||basic:toujours||`` ,en les laissant de côté, et ajoutez un bloc  ``||logic:if||`` de la catégorie  ``||logic:Logic||``.
 
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
+let phares = moveMotorZIP.range(0, 2)
 let rearlights = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (true) {
@@ -72,16 +72,16 @@ basic.forever(function () {
 ### Étape 6
 Ajoutez une condition de test à l'instruction  ``||logic:if||`` pour vérifier si``||input:light level||``  (qui se trouve dans la catégorie ``||input:Input||``) est  ``||logic:< 20||``.  
 **Note : Le nombre réel peut devoir être modifié en fonction de vos conditions de luminosité particulières. 20 a bien fonctionné pendant les tests.  
-Enfin, faites glisser ces blocs  ``||Kitronik_Move_Motor.show colour||`` à l'intérieur du bloc ``||logic:if||``.
+Enfin, faites glisser ces blocs  ``||Kitronik_Move_Motor.montrer la couleur||`` à l'intérieur du bloc ``||logic:if||``.
 
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
+let phares = moveMotorZIP.range(0, 2)
 let rearlights = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (input.lightLevel() < 20) {
-        headlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
+        phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
         rearlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
     }
 })
@@ -98,11 +98,11 @@ Cliquez sur l'icône ``||logic:+||`` sur le bloc ``||logic:if||``pour ajouter un
 #### ~ tutorialhint
 ```blocks
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
+let phares = moveMotorZIP.range(0, 2)
 let rearlights = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (input.lightLevel() < 20) {
-        headlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
+        phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
         rearlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
     } else {
         moveMotorZIP.clear()
@@ -134,11 +134,11 @@ function indicate (direction: string) {
 	
 }
 let moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
+let phares = moveMotorZIP.range(0, 2)
 let rearlights = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (input.lightLevel() < 20) {
-        headlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
+        phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
         rearlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
     } else {
         moveMotorZIP.clear()
@@ -285,28 +285,29 @@ function indicate (direction: string) {}
 ```
 
 ```ghost
-indicating = true
-indicating = false
+clignotant = true
+clignotant = false
 ```
 
 ### Étape 8
 Si vous avez un @boardname@ connecté, cliquez sur ``|Télécharger|``pour transférer votre code. 
-Press ``||input:button A||`` or ``||input:button B||`` and see :MOVE Motor turn and indicate. However, there might be some issues with our automatic headlights, so there's a couple more things we need to do...
+Appuyez sur le ``||input:bouton A||``  ou sur le ``||input:bouton B||`` et voyez le message suivant :MOVE Motor se tourner et indiquer. Cependant, il peut y avoir des problèmes avec nos phares automatiques, donc il y a encore quelques choses à faire...
+
 
 ### Étape 9
-To stop interference from the headlights, we need to temporarily stop the headlights functioning. Create a new variable called ``||variables:indicating||``, set it to be ``||logic:true||`` at the start of the ``||functions:indicate||`` function, and ``||logic:false||`` at the end. Finally, put everything in the ``||basic:forever||`` loop inside another ``||logic:if||`` statement checking ``||logic:if not||`` ``||variables:indicating||``. This will make sure that when :MOVE Motor is indicating, the headlights won't try and turn on at the same time.
+Pour mettre fin aux interférences des phares, nous devons arrêter temporairement le fonctionnement des phares. Créez une nouvelle variable appelée``||variables:clignotant||``, définissez-la comme suit``||logic:vrai||`` au début de la   ``||functions:indicate||``fonction et ``||logic:faux||`` à la fin. Enfin, mettez tout dans la boucle ``||basic:toujours||``à l'intérieur d'une autre déclaration``||logic:si||`` en vérifiant ``||logic:si non||`` ``||variables:clignotant||``. Cela permet de s'assurer que lorsque :MOVE Motor indique, les phares n'essayent pas de s'allumer en même temps.
 
 #### ~ tutorialhint
 ```blocks
-let indicating = false
+let clignotant = false
 let moveMotorZIP: Kitronik_Move_Motor.MoveMotorZIP = null
 moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
+let phares = moveMotorZIP.range(0, 2)
 let rearlights = moveMotorZIP.range(2, 2)
 basic.forever(function () {
-    if (!(indicating)) {
+    if (!(clignotant)) {
         if (input.lightLevel() < 20) {
-            headlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
+            phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
             rearlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
         } else {
             moveMotorZIP.clear()
@@ -429,7 +430,7 @@ input.onButtonPressed(Button.AB, function () {
 
 ### Étape 6
 Lorsque vous avez testé les phares et la sirène de la voiture de police plus tôt, vous avez peut-être remarqué que les phares et les feux arrière causaient à nouveau des problèmes, nous devons donc arrêter temporairement le fonctionnement des phares. 
-Créez une nouvelle variable appelée ``||variables:police||``, définissez-la comme ``||logic:true||`` au début du bloc ``||input:on button A+B pressed||``, et ``||logic:false||``à la fin. Enfin, dans la boucle  ``||basic:forever||`` première déclaration``||logic:if||``, changez le contrôle pour être``||logic:if not||`` ``||variables:indicating||`` ``||logic:and not||`` ``||variables:police||``. Cela permettra de s'assurer que lorsque :MOVE Motor indique ou est en mode voiture de police, les phares ne tenteront pas de s'allumer en même temps.
+Créez une nouvelle variable appelée ``||variables:police||``, définissez-la comme ``||logic:true||`` au début du bloc ``||input:on button A+B pressed||``, et ``||logic:false||``à la fin. Enfin, dans la boucle  ``||basic:toujours||`` première déclaration``||logic:if||``, changez le contrôle pour être``||logic:if not||`` ``||variables:indicating||`` ``||logic:and not||`` ``||variables:police||``. Cela permettra de s'assurer que lorsque :MOVE Motor indique ou est en mode voiture de police, les phares ne tenteront pas de s'allumer en même temps.
 
 #### ~ tutorialhint
 ```blocks
@@ -437,12 +438,12 @@ let indicating = false
 let police = false
 let moveMotorZIP: Kitronik_Move_Motor.MoveMotorZIP = null
 moveMotorZIP = Kitronik_Move_Motor.createMoveMotorZIPLED(4)
-let headlights = moveMotorZIP.range(0, 2)
+let phares = moveMotorZIP.range(0, 2)
 let rearlights = moveMotorZIP.range(2, 2)
 basic.forever(function () {
     if (!(indicating) && !(police)) {
         if (input.lightLevel() < 20) {
-            headlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
+            phares.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.White))
             rearlights.showColor(Kitronik_Move_Motor.colors(Kitronik_Move_Motor.ZipLedColors.Red))
         } else {
             moveMotorZIP.clear()
