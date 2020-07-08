@@ -18,7 +18,7 @@
   "Kitronik_Move_Motor.MoveMotorZIP.setZipLedColor|block": "%moveMotorZIP|fixer DEL ZIP %zipLedNum|à %rgb=kitronik_move_motor_colors",
   "Kitronik_Move_Motor.MoveMotorZIP.showColor|block": "%moveMotorZIP|montrer la couleur %rgb=kitronik_move_motor_colors",
   "Kitronik_Move_Motor.MoveMotorZIP.showRainbow|block": "%moveMotorZIP|montrer l'arc-en-ciel  %startHue|au %endHue",
-  "Kitronik_Move_Motor.MoveMotorZIP.show|block": "%moveMotorZIP|show",
+  "Kitronik_Move_Motor.MoveMotorZIP.show|block": "%moveMotorZIP|montrer",
   "Kitronik_Move_Motor.OnOffSelection.Off|block": "éteindre",
   "Kitronik_Move_Motor.OnOffSelection.On|block": "allumer",
   "Kitronik_Move_Motor.Units.Centimeters|block": "cm",
