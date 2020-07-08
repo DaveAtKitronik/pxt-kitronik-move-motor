@@ -58,36 +58,36 @@ namespace Kitronik_Move_Motor {
     // Directions the motors can rotate.
     export enum MotorDirection {
         //% block="Forward"
-        Forward,
+        Forward = 1,
         //% block="Reverse"
-        Reverse
+        Reverse = 2
     }
     // directions the :MOVE motor can drive. Implicit moving forward in the turns 
     export enum DriveDirections {
         //% block="Forward"
-        Forward,
+        Forward = 1,
         //% block="Reverse"
-        Reverse,
-        //%Left
-        Left,
-        //%Right
-        Right
+        Reverse = 2,
+        //% block="Left"
+        Left = 3,
+        //% block = "Right"
+        Right = 4
     }
     //directions the :MOVE motor can spin on the spot. 
     export enum SpinDirections {
-        //%Left
-        Left,
-        //%Right
-        Right
+        //%block = "Left"
+        Left = 3,
+        //%block = "Right"
+        Right = 4
     }
     
     export enum TurnRadii {
-        //%Tight
-        Tight,
-        //%Standard
-        Standard,
-        //%Wide
-        Wide
+        //%block = "Tight"
+        Tight = 1,
+        //%block = "Standard"
+        Standard = 2,
+        //%block = "Wide"
+        Wide = 3
     }
     
     /*ULTRASONIC*/
