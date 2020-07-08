@@ -381,7 +381,7 @@ input.onButtonPressed(Button.AB, function () {
 C'était bien, mais les feux des voitures de police clignotent généralement, et vous avez peut-être remarqué que :MOVE Motor n'arrête pas d'avancer. Il y a encore quelques petites choses à faire pour que la voiture de police soit parfaite.
 
 ### Étape 4
-Tirez une autre ``||loops:répéter 4 fois||`` et mettez-la dans le bloc ``||input:lorsque le bouton A+B pressé||`` après le bloc ``||Kitronik_Move_Motor.move Forward||`` , mais modifiez le nombre de répétitions pour qu'il soit de 30. À l'intérieur de cette boucle, ajoutez un bloc``||Kitronik_Move_Motor.rotate ZIP LEDs by 1||``, suivi d'un bloc ``||Kitronik_Move_Motor.montrer||`` et ensuite un bloc `||basic:pause||``de 100 ms. Lorsque les couleurs tournent autour des 4 LED, cela leur donne l'air de clignoter entre``||variables:rouge||`` et ``||basic:bleu||``.
+Tirez une autre ``||loops:répéter 4 fois||`` et mettez-la dans le bloc ``||input:lorsque le bouton A+B pressé||`` après le bloc ``||Kitronik_Move_Motor.déplace Avant||``, mais modifiez le nombre de répétitions pour qu'il soit de 30. À l'intérieur de cette boucle, ajoutez un bloc``||Kitronik_Move_Motor.faire pivoter les DEL ZIP de 1||``, suivi d'un bloc ``||Kitronik_Move_Motor.montrer||`` et ensuite un bloc `||basic:pause||``de 100 ms. Lorsque les couleurs tournent autour des 4 LED, cela leur donne l'air de clignoter entre``||variables:rouge||`` et ``||basic:bleu||``.
 
 #### ~ tutorialhint
 ```blocks
@@ -404,7 +404,7 @@ input.onButtonPressed(Button.AB, function () {
 ```
 
 ### Étape 5
-Une fois que les lumières ont terminé leurs 30 clignotements, il faut ``||Kitronik_Move_Motor.stop||`` :MOVE Motor et ``||Kitronik_Move_Motor.turn siren off||``.
+Une fois que les lumières ont terminé leurs 30 clignotements, il faut ``||Kitronik_Move_Motor.arrêtez||`` :MOVE Motor et ``||Kitronik_Move_Motor.turn siren off||``.
 
 #### ~ tutorialhint
 ```blocks
@@ -430,7 +430,7 @@ input.onButtonPressed(Button.AB, function () {
 
 ### Étape 6
 Lorsque vous avez testé les phares et la sirène de la voiture de police plus tôt, vous avez peut-être remarqué que les phares et les feux arrière causaient à nouveau des problèmes, nous devons donc arrêter temporairement le fonctionnement des phares. 
-Créez une nouvelle variable appelée ``||variables:police||``, définissez-la comme ``||logic:true||`` au début du bloc ``||input:on button A+B pressed||``, et ``||logic:false||``à la fin. Enfin, dans la boucle  ``||basic:toujours||`` première déclaration``||logic:si||``, changez le contrôle pour être``||logic:si not||`` ``||variables:indicating||`` ``||logic:and not||`` ``||variables:police||``. Cela permettra de s'assurer que lorsque :MOVE Motor indique ou est en mode voiture de police, les phares ne tenteront pas de s'allumer en même temps.
+Créez une nouvelle variable appelée ``||variables:police||``, définissez-la comme ``||logic:vrai||`` au début du bloc ``||input:lorsque le bouton A+B pressé||``, et ``||logic:faux||``à la fin. Enfin, dans la boucle  ``||basic:toujours||`` première déclaration``||logic:si||``, changez le contrôle pour être``||logic:si not||`` ``||variables:indicating||`` ``||logic:and not||`` ``||variables:police||``. Cela permettra de s'assurer que lorsque :MOVE Motor indique ou est en mode voiture de police, les phares ne tenteront pas de s'allumer en même temps.
 
 #### ~ tutorialhint
 ```blocks
@@ -455,4 +455,4 @@ basic.forever(function () {
 
 ### Étape 7
 CODAGE COMPLET ! Si vous avez un @boardname@ connecté, cliquez sur ``|Télécharger|``pour transférer votre code. 
-Essayez d'appuyer sur les ``||input:buttons A+B||`` maintenant. Regardez la sirène s'allumer, les lumières clignoter et :MOVE Motor drive forward, le tout sans interférence des phares.
+Essayez d'appuyer sur les ``||input:lorsque le bouton A+B pressé||`` maintenant. Regardez la sirène s'allumer, les lumières clignoter et :MOVE Motor drive forward, le tout sans interférence des phares.
