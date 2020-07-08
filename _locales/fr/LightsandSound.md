@@ -1,14 +1,18 @@
-:MOVE Motor Lights and Sound
+### @activities true
+### @explicitHints true
+
+#:MOVE Motor Lights and Sound
 
 ## Introduction
 ### Introduction @unplugged
-Apprenez à utiliser les feux du moteur :MOVE pour faire des phares et des clignotants, puis combinez-les avec le buzzer pour créer une voiture de police.
+Apprenez à utiliser les feux du :MOVE motor pour faire des phares et des clignotants, puis combinez-les avec le buzzer pour créer une voiture de police.
 
+![:MOVE Motor angled view with lights](https://KitronikLtd.github.io/pxt-kitronik-move-motor/assets/move-motor-lights.jpg)
 
 ## Phares et feux arrière
 ### Étape 1
 Pour commencer, faisons des phares et des feux arrière pour :MOVE Motor.  
-Tout d'abord, placez les variables ``||variables:set moveMotorZIP to||`` ``||Kitronik_Move_Motor.MOVE Motor with 4 ZIP LEDs||`` du bloc ``||Kitronik_Move_Motor.Lights||`` de la catégorie  ``||Kitronik_Move_Motor.MOVE Motor||`` dans le bloc ``||basic:on start||``.  
+Tout d'abord, placez les variables ``||variables:définir moveMotorZIP à||`` ``||Kitronik_Move_Motor.MOVE Motor avec 4 DEL ZIP||`` du bloc ``||Kitronik_Move_Motor.Luminères||`` de la catégorie  ``||Kitronik_Move_Motor.MOVE Motor||`` dans le bloc ``||basic:au demarrage||``.  
 Cela permet de mettre les DEL ZIP sur :MOVE Motor prêt à être utilisé.
 
 #### ~ tutorialhint
